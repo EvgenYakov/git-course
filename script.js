@@ -1,4 +1,16 @@
+// first task
+// Write a loop that makes seven calls to console.log to output the following
+// triangle:
+// #
+// ##
+// ###
+// ####
+// #####
+// ######
+// #######
 
-console.log('test2');
+let s = "";
 
-document.body.innerHTML = '<h1>Hello world</h1>';
+for (let i = 0; i < 7; i++) {
+    console.log(s += '#')
+}
