@@ -11,20 +11,14 @@
 // way to fix this?
 
 
-
-function countChar(s, c) {
-    n = s.length;
-    let k = 0;
-    for (let i = 0; i < n; i++) {
-        if (s[i] == c) {
-            ++k
-        }
+function isEven(a) {
+    if (a >= 0) {
+        b = a - 2;
+        if (b == 1) return false
+        else if (b == 0) return true
+        else return isEven(b)
     }
-    if (k == 0) return "Таких букв нет"
-    else
-        return `Количество букв ${c} = ${k}`;
+    else return "Число отрицательное"
 }
-let b = prompt("Введите строку");
-let c = prompt("Введите символ");
-
-alert(countChar(b, c));
+let b = +prompt("Введите число");
+alert(isEven(b));
