@@ -2,6 +2,8 @@
 // its smallest argument. We can build something like that now. Write a function
 // min that takes two arguments and returns their minimum.
 
+"use strict";
+
 let min = (a, b) => {
     if (a > b) return b
     else if (a < b) return a

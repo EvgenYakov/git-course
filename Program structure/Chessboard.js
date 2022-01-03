@@ -15,6 +15,9 @@
 // of the given width and height
 
 
+
+"use strict";
+
 let l = +prompt('Введите длинну сетки:');
 let h = +prompt('Введите высоту сетки:');
 

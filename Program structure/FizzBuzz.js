@@ -9,6 +9,8 @@
 // labor market value just went up.)
 
 
+"use strict";
+
 let x = +prompt('Введите способ решения:\n 1 - конструкция if\n 2 - конструкция вопрос');
 
 switch (x) {

@@ -11,6 +11,7 @@
 // (rather than counting only uppercase “B” characters). Rewrite countBs to
 // make use of this new function.
 
+"use strict";
 
 
 function countChar(s, c) {
