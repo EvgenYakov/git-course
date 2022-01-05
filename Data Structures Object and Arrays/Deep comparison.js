@@ -10,13 +10,7 @@
 // accident, typeof null also produces "object".
 // The Object.keys function will be useful when you need to go over the properties of objects to compare them
 
-//-------------------------------------------------------------------------------
-// Доболню код временем выполнения алгоритма
-// Время выводится в консоль
 
-//-------------------Старт------------------------
-var time = performance.now();
-//-------------------Старт------------------------
 
 
 "use strict";
@@ -66,13 +60,4 @@ let obj2 = {
 }
 
 console.log(deepEqual(obj1, obj2));
-
-
-
-
-//-------------------Время выполнения программы--------
-time = performance.now() - time;
-console.log('Время выполнения = ', time);
-//-------------------Время выполнения программы---------
-
 
