@@ -14,58 +14,13 @@
 // Доболню код временем выполнения алгоритма
 // Время выводится в консоль
 
+
+"use strict";
 //-------------------Старт------------------------
 var time = performance.now();
 //-------------------Старт------------------------
 
 
-"use strict";
-
-function deepEqual(obj1, obj2) {
-    if (((typeof obj1 == "object") && (obj1 != null)) && ((typeof obj2 == "object") && (obj2 != null))) {
-        if (Object.keys(obj1).length != Object.keys(obj2).length) return false;
-        else {
-            let ao1 = Object.keys(obj1);
-            let ao2 = Object.keys(obj2);
-            let vao1 = Object.values(obj1);
-            let vao2 = Object.values(obj2);
-            let k = 0;
-            for (let i = 0; i < ao1.length; i++) {
-                for (let j = 0; j < ao2.length; j++) {
-                    if (ao1[i] == ao2[j]) {
-
-                        if (deepEqual(vao1[i], vao2[j]) == true) ++k;
-                    }
-                }
-
-            }
-            if (k == ao1.length) return true
-            else return false
-        }
-    }
-    else return obj1 === obj2;
-}
-
-
-
-let obj1 = {
-    data: 2,
-    ves: 3,
-    name: "Dima",
-    lop: {
-        floor: " Man"
-    }
-};
-let obj2 = {
-    data: 2,
-    ves: 3,
-    name: "Dima",
-    lop: {
-        floor: " Man"
-    }
-}
-
-console.log(deepEqual(obj1, obj2));
 
 
 
