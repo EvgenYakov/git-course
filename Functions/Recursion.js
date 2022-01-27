@@ -14,12 +14,25 @@
 
 function isEven(a) {
     if (a >= 0) {
-        b = a - 2;
-        if (b == 1) return false
-        else if (b == 0) return true
-        else return isEven(b)
+        if (a == 1) {
+            return false;
+        }
+        else if (a == 0) {
+            return true;
+        }
+        else return isEven(a - 2);
     }
-    else return "Число отрицательное"
+    else {
+        return "Введите число"
+    }
+
 }
-let b = +prompt("Введите число");
+
+let b = +prompt("Введите число, при вводе пустой строки будет введено 0");
+
+while (isNaN(b)) {
+    b = +prompt("Введите число, а не строку");
+}
+
 alert(isEven(b));
+
