@@ -7,7 +7,6 @@
 // method
 
 function mevery1(arr, pfunc) {
-
     for (let i = 0; i < arr.length; i++) {
         if (!pfunc(arr[i])) return false;
     }

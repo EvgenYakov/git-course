@@ -20,21 +20,30 @@
 
 let l = +prompt('Введите длинну сетки:');
 let h = +prompt('Введите высоту сетки:');
-
 let s = "";
 
 for (let i = 1; i <= h; i++) {
+
     if (i % 2 == 1)
         for (let j = 0; j < l; j++) {
-            if (j % 2 == 0) s += ' ';
-            else if (j % 2 == 1)
-                s += '#';
-        }
-    else
-        for (let j = 0; j < l; j++) {
-            if (j % 2 == 0) s += '#';
-            else if (j % 2 == 1)
+            if (j % 2 == 0) {
                 s += ' ';
+            }
+            else if (j % 2 == 1) {
+                s += '#';
+            }
+        }
+
+    else
+
+        for (let j = 0; j < l; j++) {
+            if (j % 2 == 0) {
+                s += '#';
+            }
+            else if (j % 2 == 1) {
+                s += ' ';
+            }
+
         }
 
     console.log(s);
