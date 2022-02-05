@@ -8,22 +8,22 @@
 var time = performance.now();
 //-------------------Старт------------------------
 
-// Fill in this regular expression.
-let number = /^\D[]$/;
+const ordinal = require("ordinal");
+const { days, months } = require("date-names");
 
-// Tests:
-for (let str of ["1", "-1", "+15", "1.55", ".5", "5.",
-    "1.3e2", "1E-4", "1e+12"]) {
-    if (!number.test(str)) {
-        console.log(`Failed to match '${str}'`);
-    }
-}
-for (let str of ["1a", "+-1", "1.2.3", "1+1", "1e4.5",
-    ".5.", "1f5", "."]) {
-    if (number.test(str)) {
-        console.log(`Incorrectly accepted '${str}'`);
-    }
-}
+exports.formatDate = function (date, format) {
+    return format.replace(/YYYY|M(MMM)?|Do?|dddd/g, tag => {
+        if (tag == "YYYY") return date.getFullYear();
+        if (tag == "M") return date.getMonth();
+        if (tag == "MMMM") return months[date.getMonth()];
+        if (tag == "D") return date.getDate();
+        if (tag == "Do") return ordinal(date.getDate());
+        if (tag == "dddd") return days[date.getDay()];
+    });
+};
+
+console.log(formatDate(new Date(2017, 9, 13),
+    "dddd  o"));
 
 //-------------------Время выполнения программы--------
 time = performance.now() - time;
