@@ -1,0 +1,51 @@
+<!-- Вкладки
+Панели с вкладками очень распространены в пользовательских интерфейсах.
+Они позволяют выбрать интерфейсную панель, перейдя на одну из нескольких
+вкладок, ~торчащих~ над элементом. В этом упражнении вам предлагается
+реализовать простой интерфейс с вкладками. Напишите функцию asTabs,
+которая принимает узел DOM и создает интерфейс с вкладками, показывающий
+дочерние элементы этого узла.
+Она должна вставлять список элементов <buttoп> в верхней части узла, по одному
+для каждого дочернего элемента, содержащего текст, полученный из атрибута
+data-tabпame дочернего элемента. Все исходные дочерние элементы, кроме
+одного, должны быть скрыты (свойство display имеет значение попе). Чтобы
+выбрать узел, который должен быть видимым, нужно нажать его кнопку.
+Когда это заработает, дополните интерфейс, чтобы кнопка выбранной
+вкладки имела другой стиль и чтобы было понятно, какая вкладка выбрана.  -->
+
+<!doctype html>
+
+<tab-panel>
+    <div data-tabname="one">Tab one</div>
+    <div data-tabname="two">Tab two</div>
+    <div data-tabname="three">Tab three</div>
+    <div data-tabname="four">Tab four</div>
+</tab-panel>
+<script>
+    function asTabs(node) {
+        let tabarr = Array.from(node.children);
+        let div = document.createElement("div");
+        let btns = [];
+        for (let i = 0; i < tabarr.length; i++) {
+            let btn = document.createElement("button");
+            btn.textContent = tabarr[i].getAttribute("data-tabname");
+            let obj = tabarr[i];
+            btn.addEventListener("click", () => changecolor({ obj, btn }));
+            btns.push({ obj, btn });
+            div.appendChild(btn);
+        }
+        node.insertBefore(div, node.firstChild);
+
+        function changecolor(infobtn) {
+            for (let tab of btns) {
+                let selected = tab.obj == infobtn.obj;
+                tab.obj.style.display = selected ? "" : "none";
+                tab.btn.style.color = selected ? "red" : "";
+            }
+        }
+        changecolor(btns[0]);
+
+    }
+    asTabs(document.querySelector("tab-panel"));
+
+</script>
