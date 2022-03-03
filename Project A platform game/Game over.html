@@ -1,0 +1,39 @@
+<!-- В платформенных играх игрок по традиции начинает игру с ограниченным
+количеством жизней и теряет одну из них при каждой смерти. Когда жизни
+заканчиваются, игра начинается с самого начала.
+Добавьте в runGame наличие у игрока нескольких жизней. Пускай игрок
+начинает с трех. Выводите текущее количество жизней
+(используя console.log) каждый раз, когда начинается новый уровень 
+  
+Проверял тут ---> https://eloquentjavascript.net/code/#16.1
+
+-->
+
+<!doctype html>
+<script src="code/chapter/16_game.js"></script>
+<script src="code/levels.js"></script>
+
+<link rel="stylesheet" href="css/game.css">
+
+<body>
+    <script>
+        // The old runGame function. Modify it...
+        async function runGame(plans, Display) {
+            let lvs = 3;
+            for (let level = 0; level < plans.length && lvs > 0;) {
+                console.log(`lives ${lvs}`)
+                let status = await runLevel(new Level(plans[level]),
+                    Display);
+                if (status == "won") level++
+                else {
+                    lvs--;
+                }
+            }
+            if (lvs > 0) console.log("You've won!")
+            else {
+                console.log("you lose")
+            }
+        }
+        runGame(GAME_LEVELS, DOMDisplay);
+    </script>
+</body>

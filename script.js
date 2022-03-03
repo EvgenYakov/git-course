@@ -9,9 +9,13 @@ var time = performance.now();
 //-------------------Старт------------------------
 
 //var topScope = Object.create(null);
+let arr = [];
+arr.unshift(3);
+arr.push(2);
+console.log(
 
-
-
+    null + { 0: 1 }[0] + [, [1],][1][0]
+)
 //-------------------Время выполнения программы--------
 time = performance.now() - time;
 console.log('Время выполнения = ', time);

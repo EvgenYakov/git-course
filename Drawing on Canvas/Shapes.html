@@ -1,0 +1,102 @@
+<!-- Write a program that draws the following shapes on a canvas:
+A trapezoid (a rectangle that is wider on one side)
+A red diamond (a rectangle rotated 45 degrees or ¼π radians)
+A zigzagging line
+A spiral made up of 100 straight line segments
+A yellow star
+When drawing the last two, you may want to refer to the
+explanation of Math.cos and Math.sin in Chapter 14, which
+describes how to get coordinates on a circle using these functions.
+
+I recommend creating a function for each shape. Pass the position,
+and optionally other properties such as the size or the number
+of points, as parameters. The alternative, which is to hard-code
+numbers all over your code, tends to make the code needlessly
+hard to read and modify -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="code/chapter/16_game.js"></script>
+    <script src="code/levels.js"></script>
+    <script src="code/chapter/17_canvas.js"></script>
+
+    <canvas width="600" height="200"></canvas>
+
+    <script>
+        let cx = document.querySelector("canvas").getContext("2d");
+
+        function drawTrap(x, y) {
+            cx.strokeStyle = "black";
+            cx.beginPath();
+            cx.moveTo(x, y);
+            cx.lineTo(x - 20, y + 40);
+            cx.lineTo(x + 50, y + 40);
+            cx.lineTo(x + 30, y);
+            cx.lineTo(x, y);
+            cx.stroke();
+        }
+
+        function drawRect(x, y) {
+
+            cx.translate(x + 30, y + 30);
+            cx.rotate(Math.PI / 4);
+            cx.fillStyle = "red";
+            cx.fillRect(-30, -30, 60, 60);
+            cx.resetTransform();
+        }
+
+        function drawPruzh(x, y) {
+            let cx = document.querySelector("canvas").getContext("2d");
+            cx.beginPath();
+            cx.moveTo(x, y)
+            for (let i = 0; i < 8; i++) {
+                cx.lineTo(x + 80, y + i * 10 + 5)
+                cx.lineTo(x, y + i * 10 + 10);
+            }
+            cx.stroke();
+        }
+
+        function drawSpiral(x, y) {
+            cx.beginPath();
+            moveTo(x + 40, y + 40);
+            for (let i = 0; i < 150; i++) {
+                let angle = i * Math.PI / 15;
+                let dist = 40 * i / 150;
+                cx.lineTo(x + 40 + Math.cos(angle) * dist,
+                    y + 40 + Math.sin(angle) * dist);
+            }
+            cx.stroke();
+        }
+
+        function drawExpl(x, y) {
+            let x1 = x + 40;
+            let y1 = y + 40;
+            cx.beginPath();
+            cx.moveTo(x1 + 40, y1);
+            for (let i = 1; i <= 8; i++) {
+                let angle = i * Math.PI / 4;
+                cx.quadraticCurveTo(x1, y1, x1 + Math.cos(angle) * 50, y1 + Math.sin(angle) * 50);
+            }
+            cx.fillStyle = "yellow";
+            cx.fill();
+        }
+
+
+        drawTrap(50, 50);
+        drawRect(150, 20)
+        drawPruzh(250, 20);
+        drawSpiral(350, 30);
+        drawExpl(450, 30);
+    </script>
+</body>
+
+</html>
