@@ -1,0 +1,31 @@
+<!-- Создайте интерфейс, который позволял бы человеку вводить и выполнять
+фрагменты кoдaJavaScript.
+Создайте поле <textarea> и кнопку рядом с ним, при нажатии которой
+использовался бы конструктор Function, описанный в главе 10, чтобы обернуть
+текст в функцию и вызвать ее.
+Преобразуйте возвращаемое значение функции или возникшую ошибку
+в строку и отображайте ее под текстовым полем.  -->
+
+<!doctype html>
+<script src="code/chapter/18_http.js"></script>
+
+<textarea id="code">return "hi";</textarea>
+<button id="button">Run</button>
+<pre id="output"></pre>
+
+<script>
+	let button = document.querySelector("button");
+	button.addEventListener("click", () => {
+		let output = document.querySelector("#output");
+		let data = document.querySelector("#code").value;
+		try {
+			let comp = Function(data)();
+			output.textContent = String(comp);
+		} catch (e) {
+			output.textContent = "error: " + e.message;
+			console.log(e)
+		}
+	})
+
+
+</script>

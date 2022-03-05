@@ -40,7 +40,8 @@
     function moved(event) {
         if (event.buttons == 0) {
             window.removeEventListener("mousemove", moved);
-        } else {
+        }
+        else {
             let div = document.createElement('div');
             div.className = 'trail';
             x = event.pageX;

@@ -32,7 +32,8 @@
                 p.textContent = "💥";
                 document.body.removeEventListener("keydown", chsize);
             }
-        } else if (event.key == "ArrowDown") {
+        }
+        else if (event.key == "ArrowDown") {
             size *= 0.9;
             p.style.fontSize = size + "px";
             event.preventDefault();
