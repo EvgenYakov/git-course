@@ -18,7 +18,7 @@ class Group {
             return
         }
         for (let i = 0; i < this.entries.length; i++) {
-            if (value === this.entries[i]) { return }
+            if (value === this.entries[i]) return
         }
         this.entries.push(value);
         return

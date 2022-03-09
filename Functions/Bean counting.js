@@ -23,8 +23,7 @@ function countChar(s, c) {
         }
     }
     if (k == 0) return "Таких букв нет"
-    else
-        return `Количество букв ${c} = ${k}`;
+    else return `Количество букв ${c} = ${k}`;
 }
 let b = prompt("Введите строку");
 let c = prompt("Введите символ");

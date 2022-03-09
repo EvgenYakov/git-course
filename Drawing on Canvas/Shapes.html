@@ -71,8 +71,7 @@ hard to read and modify -->
             for (let i = 0; i < 150; i++) {
                 let angle = i * Math.PI / 15;
                 let dist = 40 * i / 150;
-                cx.lineTo(x + 40 + Math.cos(angle) * dist,
-                    y + 40 + Math.sin(angle) * dist);
+                cx.lineTo(x + 40 + Math.cos(angle) * dist, y + 40 + Math.sin(angle) * dist);
             }
             cx.stroke();
         }
@@ -89,7 +88,6 @@ hard to read and modify -->
             cx.fillStyle = "yellow";
             cx.fill();
         }
-
 
         drawTrap(50, 50);
         drawRect(150, 20)

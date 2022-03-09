@@ -22,8 +22,7 @@
             let lvs = 3;
             for (let level = 0; level < plans.length && lvs > 0;) {
                 console.log(`lives ${lvs}`)
-                let status = await runLevel(new Level(plans[level]),
-                    Display);
+                let status = await runLevel(new Level(plans[level]), Display);
                 if (status == "won") level++
                 else {
                     lvs--;
