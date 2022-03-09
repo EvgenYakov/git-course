@@ -8,8 +8,6 @@
 var time = performance.now();
 //-------------------Старт------------------------
 
-//var topScope = Object.create(null);
-
 //-------------------Время выполнения программы--------
 time = performance.now() - time;
 console.log('Время выполнения = ', time);

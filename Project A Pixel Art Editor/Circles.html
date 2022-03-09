@@ -1,0 +1,40 @@
+<!-- Создайте инструмент под названием circle, при перетаскивании которого
+рисуется круг, заполненный цветом. Центр круга находится в точке, откуда
+начинается перетаскивание или в которой произошло касание, а радиус
+круга определяется расстоянием перетаскивания.
+Проверял тут ---> https://eloquentjavascript.net/code/#19.3
+-->
+
+
+
+<!doctype html>
+<script src="code/chapter/19_paint.js"></script>
+
+<div></div>
+<script>
+    function circle(start, state, dispatch) {
+        function drawCircle(pos) {
+            let rad = Math.sqrt(Math.pow(pos.x - start.x, 2) + Math.pow(pos.y - start.y, 2));
+            let radC = Math.ceil(rad);
+            let drawn = [];
+            for (let yf = -radC; yf <= radC; yf++) {
+                for (let xf = -radC; xf <= radC; xf++) {
+                    let inrad = Math.sqrt(Math.pow(xf, 2) + Math.pow(yf, 2));
+                    let x = start.x + xf, y = start.y + yf;
+                    if (inrad < rad && !(y < 0 || y >= state.picture.height ||
+                        x < 0 || x >= state.picture.width)) {
+                        drawn.push({ x, y, color: state.color });
+                    }
+                }
+            }
+            dispatch({ picture: state.picture.draw(drawn) });
+        }
+        drawCircle(start);
+        return drawCircle;
+    }
+
+    let dom = startPixelEditor({
+        tools: Object.assign({}, baseTools, { circle })
+    });
+    document.querySelector("div").appendChild(dom);
+</script>
